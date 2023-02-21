@@ -1,0 +1,42 @@
+#!/usr/bin/env node
+
+const program = require("commander");
+const path = require("path");
+
+const globalOptions = require(path.resolve(__dirname, "../lib/globaloptions.js"));
+const { arrayToArrayBySperator } = require(path.resolve(__dirname, "../lib/utils.js"));
+
+const copy = require(path.resolve(__dirname, "../lib/copy.js"));
+const less = require(path.resolve(__dirname, "../lib/less.js"));
+
+//global options
+program.option('-c, --configpath <path>', "path of config file", "qtbuildcli.config")
+    .option('-r, --replace <items...>', "replace item1 by item2 (-r item1-item2)")
+    .option('-s, --spearator <char>', 'separator character', '-')
+
+//version
+program.version(require("../package.json").version, '-v, --version');
+
+// copy
+program.command('copy')
+    .option('-a, --active <items...>', "copy item1 to item2 (-a item1-item2)")
+    .description("copy files")
+    .action((option, cmd) => {
+        let gOpt = globalOptions(program.opts());
+
+        let { active = [] } = option;
+        active = arrayToArrayBySperator(active, gOpt.spearator);
+
+        copy(gOpt.config["copy"], active);
+    })
+
+// less
+program.command('less')
+    .description("complier less files to qss")
+    .action((option, cmd) => {
+        let gOpt = globalOptions(program.opts());
+        less(gOpt.config["less"]);
+    })
+
+
+program.parse(process.argv);
