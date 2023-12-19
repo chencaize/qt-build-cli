@@ -2,6 +2,36 @@
 
 exec command during build qt , presently it support buildStyle(less)、copy.
 
+buildStyle:it can use less to compile the less file to qss file
+copy:it can copy the file to target dir
+
+# API
+
+```
+Usage: qt-build-cli [options] [command]
+
+Options:
+  -c, --config <items...>   config
+  -r, --replace <items...>  replace item1 by item2
+  -s, --spearator <char>    separator character (default: "-")
+  -p, --params <items...>   params
+  -v, --version             output the version number
+  -h, --help                display help for command
+
+Commands:
+  copy                      copy files
+  buildStyle                complier style(currently support less) files to qss
+  help [command]            display help for command
+```
+
+# Installation
+
+```
+npm install qt-build-cli
+#or
+yarn add qt-build-cli
+```
+
 # Example
 
 config.config
@@ -95,34 +125,11 @@ system(qt-build-cli buildStyle -c config.config demoa -r PWD-$$PWD)
 QMAKE_POST_LINK += qt-build-cli -c config.config dll-debugdll lib-debuglib include-debuginclude -r PWD-$$PWD OUT_PWD-$$PWD/build APP_NAME-$$TARGET BUILD_TYPE-build EXEC_DIR-$$PWD/build/bin DEBUG_DIR-$$PWD/build/debug
 
 #release
-QMAKE_POST_LINK += qt-build-cli -c config.config dll-debugdll lib-debuglib include-debuginclude -r PWD-$$PWD OUT_PWD-$$PWD/build APP_NAME-$$TARGET BUILD_TYPE-build EXEC_DIR-$$PWD/build/bin PUBLISH_DIR-$$PWD/build/publish
+QMAKE_POST_LINK += qt-build-cli -c config.config dll-releasedll lib-releaselib include-releaseinclude -r PWD-$$PWD OUT_PWD-$$PWD/build APP_NAME-$$TARGET BUILD_TYPE-build EXEC_DIR-$$PWD/build/bin PUBLISH_DIR-$$PWD/build/publish
 ```
 
-# Installation
 
-```
-npm install qt-build-cli
-#or
-yarn add qt-build-cli
-```
 
-# API
-
-```
-Usage: qt-build-cli [options] [command]
-
-Options:
-  -c, --config <items...>   config
-  -r, --replace <items...>  replace item1 by item2
-  -s, --spearator <char>    separator character (default: "-")
-  -v, --version             output the version number
-  -h, --help                display help for command
-
-Commands:
-  copy                      copy files
-  buildStyle                complier style(currently support less) files to qss
-  help [command]            display help for command
-```
 
 # How to use it
 
@@ -131,10 +138,10 @@ Commands:
 ### command
 
 ```
-qt-build-cli copy -c "demo1.js-demo2.js" "{{APP}}.js-demo4.js" -r APP-demo3
+qt-build-cli copy -c "demo1.js-dir1" "{{APP}}.js-dir2" -r APP-demo3
 ```
 
-it will copy demo1.js to demo2.js , then copy demo3.js to demo4.js
+it will copy demo1.js to dir1 , then copy demo3.js to dir2
 
 ### config file
 
@@ -159,13 +166,13 @@ it will copy demo1.js to demo2.js , then copy demo3.js to demo4.js
             "demo2":{
                 "prefix": "d:/",
                 "items": [
-                    "demo2.js"
+                    "dir1"
                 ]
             },
             "demo4":{
                 "prefix": "d:/",
                 "items": [
-                    "demo4.js"
+                    "dir2"
                 ]
             }
         }
@@ -177,14 +184,14 @@ it will copy demo1.js to demo2.js , then copy demo3.js to demo4.js
 qt-build-cli copy -c config.config demo1-demo2 demo3-demo4 -r APP-demo3
 ```
 
-it will copy d:\demo1.js to d:\demo2.js , then copy d:\demo3.js to d:\demo4.js
+it will copy d:\demo1.js to d:\dir1 , then copy d:\demo3.js to d:\dir2
 
 ## buildStyle
 
 ### command 
 
 ```
-qt-build-cli buildStyle -c "demo1.less-demo2.qss" "{{APP}}.less-demo4.qss" -r APP-demo3
+qt-build-cli buildStyle -c "demo1.less-demo2.qss" "{{APP}}.less-demo4.qss" -p "--js" "--js" -r APP-demo3
 ```
 
 it will exec lessc demo1.less demo2.qss, and then exec lessc demo3.less demo4.qss.
@@ -198,20 +205,21 @@ config.config
     "buildStyle":{
         "demo":{
             "from":"demo1.less",
-            "to":"demo2.qss"
+            "to":"demo2.qss",
         },
         "demo2":{
             "from":"{{APP}}.less",
-            "to":"demo4.qss"
+            "to":"demo4.qss",
         }
     }
 }
 ```
 
 ```
-qt-build-cli buildStyle -c config.config demo demo2 -r APP-demo3
+qt-build-cli buildStyle -c config.config demo demo2 -p "--js" "--js" -r APP-demo3
 ```
 
 it will exec lessc demo1.less demo2.qss, and then exec lessc demo3.less demo4.qss.
 
 # update
+1. 1.0.9 fix README.md

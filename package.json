@@ -1,6 +1,6 @@
 {
   "name": "qt-build-cli",
-  "version": "1.0.6",
+  "version": "1.0.9",
   "description": "qt build extends",
   "bin": {
     "qt-build-cli": "bin/qt-build-cli"
