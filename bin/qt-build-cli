@@ -21,7 +21,6 @@ program.version(require("../package.json").version, '-v, --version');
 program.command('copy')
     .description("copy files")
     .action((option, cmd) => {
-        console.log("111")
         let gOpt = globalOptions(program.opts());
         copy(gOpt);
     })

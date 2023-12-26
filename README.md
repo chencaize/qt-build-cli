@@ -14,7 +14,7 @@ Options:
   -c, --config <items...>   config
   -r, --replace <items...>  replace item1 by item2
   -s, --spearator <char>    separator character (default: "-")
-  -p, --params <items...>   params(use '' to quote)
+  -p, --params <items...>   params
   -v, --version             output the version number
   -h, --help                display help for command
 
@@ -238,3 +238,4 @@ lessc example/buildstyle/source/app.less example/buildstyle/target/app.qss \ --m
 1. 1.0.9 fix README.md
 2. 1.1.0 upgrade to support more copy feature,add example,modify README.md
 3. 1.1.1 config json file support comment
+4. 1.1.2 Fix the issue that items in the copy cannot use multi-level directories
