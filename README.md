@@ -237,3 +237,4 @@ lessc example/buildstyle/source/app.less example/buildstyle/target/app.qss \ --m
 # update
 1. 1.0.9 fix README.md
 2. 1.1.0 upgrade to support more copy feature,add example,modify README.md
+3. 1.1.1 config json file support comment
