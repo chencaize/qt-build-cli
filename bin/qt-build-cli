@@ -12,6 +12,7 @@ const buildStyle = require(path.resolve(__dirname, "../lib/buildStyle.js"));
 program.option('-c, --config <items...>', "config")
     .option('-r, --replace <items...>', "replace item1 by item2")
     .option('-s, --spearator <char>', 'separator character', '-')
+    .option('-p, --params <items...>', 'params,only useful in buildstyle')
 
 //version
 program.version(require("../package.json").version, '-v, --version');
@@ -20,6 +21,7 @@ program.version(require("../package.json").version, '-v, --version');
 program.command('copy')
     .description("copy files")
     .action((option, cmd) => {
+        console.log("111")
         let gOpt = globalOptions(program.opts());
         copy(gOpt);
     })
