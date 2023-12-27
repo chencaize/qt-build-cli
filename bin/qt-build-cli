@@ -12,7 +12,7 @@ const buildStyle = require(path.resolve(__dirname, "../lib/buildStyle.js"));
 program.option('-c, --config <items...>', "config")
     .option('-r, --replace <items...>', "replace item1 by item2")
     .option('-s, --spearator <char>', 'separator character', '-')
-    .option('-p, --params <items...>', 'params,only useful in buildstyle')
+    .option('-d, --debug','turn on debugging:display logs',false)
 
 //version
 program.version(require("../package.json").version, '-v, --version');
@@ -27,6 +27,7 @@ program.command('copy')
 
 // buildStyle
 program.command('buildStyle')
+    .option('-p, --params <items...>', 'params')
     .description("complier style(currently support less) files to qss")
     .action((option, cmd) => {
         let gOpt = globalOptions(program.opts());

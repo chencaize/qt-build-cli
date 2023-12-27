@@ -14,13 +14,13 @@ Options:
   -c, --config <items...>   config
   -r, --replace <items...>  replace item1 by item2
   -s, --spearator <char>    separator character (default: "-")
-  -p, --params <items...>   params
+  -d, --debug               turn on debugging:display logs (default: false)    
   -v, --version             output the version number
   -h, --help                display help for command
 
 Commands:
   copy                      copy files
-  buildStyle                complier style(currently support less) files to qss
+  buildStyle [options]      complier style(currently support less) files to qss
   help [command]            display help for command
 ```
 
@@ -239,3 +239,4 @@ lessc example/buildstyle/source/app.less example/buildstyle/target/app.qss \ --m
 2. 1.1.0 upgrade to support more copy feature,add example,modify README.md
 3. 1.1.1 config json file support comment
 4. 1.1.2 Fix the issue that items in the copy cannot use multi-level directories
+5. 1.1.3 Fix config param's repalce bug,add debug option
