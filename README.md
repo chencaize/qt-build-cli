@@ -240,3 +240,4 @@ lessc example/buildstyle/source/app.less example/buildstyle/target/app.qss \ --m
 3. 1.1.1 config json file support comment
 4. 1.1.2 Fix the issue that items in the copy cannot use multi-level directories
 5. 1.1.3 Fix config param's repalce bug,add debug option
+6. 1.1.4 Fix qtBuildCli can not get the params' bug
