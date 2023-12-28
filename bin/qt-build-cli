@@ -21,7 +21,7 @@ program.version(require("../package.json").version, '-v, --version');
 program.command('copy')
     .description("copy files")
     .action((option, cmd) => {
-        let gOpt = globalOptions(program.opts());
+        let gOpt = globalOptions({...program.opts(),...option});
         copy(gOpt);
     })
 
@@ -30,7 +30,7 @@ program.command('buildStyle')
     .option('-p, --params <items...>', 'params')
     .description("complier style(currently support less) files to qss")
     .action((option, cmd) => {
-        let gOpt = globalOptions(program.opts());
+        let gOpt = globalOptions({...program.opts(),...option});
         buildStyle(gOpt);
     })
 
