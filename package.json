@@ -1,6 +1,6 @@
 {
   "name": "qt-build-cli",
-  "version": "1.1.5",
+  "version": "1.1.6",
   "description": "qt build extends",
   "bin": {
     "qt-build-cli": "bin/qt-build-cli"
@@ -11,7 +11,7 @@
     "node_modules"
   ],
   "scripts": {
-    "link": "npm link qt-build-cli",
+    "link": "npm link",
     "unlink": "npm unlink qt-build-cli -g",
     "clean": "shx rm -rf ./test/target",
     "test-copy": "qt-build-cli copy -c test/config.json -r VIRABLE-test1",
@@ -38,7 +38,7 @@
     "fs-extra": "^11.1.0",
     "handlebars": "^4.7.7",
     "json5": "^2.2.3",
-    "less": "^4.2.0",
+    "less-4.2.0-4261": "^4.2.0",
     "moment": "^2.30.0"
   },
   "devDependencies": {
