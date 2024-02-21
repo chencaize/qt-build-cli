@@ -243,3 +243,4 @@ lessc test/source/buildstyle/app.less test/target/buildstyle/app.qss \ --modify-
 6. 1.1.4 Fix qtBuildCli can not get the params' bug
 7. 1.1.5 rename example to test,add test script,use less 4.2.0
 8. 1.1.6 modify less to less-4.2.0-4261,this is less's PR 4261(this will support variable concatenation)
+9. 1.1.7 Fix lessc command not found bug
