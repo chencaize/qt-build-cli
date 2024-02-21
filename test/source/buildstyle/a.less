@@ -1,0 +1,12 @@
+.test {
+    background-color: green;
+}
+
+@prop : p;
+@num : 3;
+
+[@{prop}-attr^="val@{num}"],
+[@{prop}-attr=@{num}],
+[@{prop}-attr] {
+    attributes: yes;
+}

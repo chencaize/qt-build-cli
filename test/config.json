@@ -1,0 +1,75 @@
+{
+    "copy": {
+        "demo1": {
+            "from": {
+                "prefix": "test/source/copy",
+                "items": [
+                    "**",
+                    "*.*"
+                ]
+            },
+            "to": {
+                "prefix": "test/target/copy",
+                "items": [
+                    "demo1"
+                ]
+            }
+        },
+        "demo2": {
+            "from": {
+                "prefix": "test/source/copy",
+                "items": [
+                    "1.*",
+                    "*.pdf",
+                    "test*",
+                    "dir*",
+                    "*test",
+                    "r[d.dll$]"
+                ]
+            },
+            "to": {
+                "prefix": "test/target/copy",
+                "items": [
+                    "demo2_1",
+                    "demo2_2"
+                ]
+            }
+        },
+        "demo3": {
+            "from": {
+                "prefix": "test/source/copy",
+                "items": [
+                    "{{VIRABLE}}.*"
+                ]
+            },
+            "to": {
+                "prefix": "test/target/copy",
+                "items": [
+                    "demo3"
+                ]
+            }
+        }
+    },
+    "buildStyle": {
+        "demo1": {
+            "from": {
+                "prefix": "test/source/buildstyle",
+                "item": "a.less"
+            },
+            "to": {
+                "prefix": "test/target/buildstyle",
+                "item": "a.qss"
+            }
+        },
+        "demo2": {
+            "from": {
+                "prefix": "test/source/buildstyle",
+                "item": "{{VIRABLE}}.less"
+            },
+            "to": {
+                "prefix": "test/target/buildstyle",
+                "item": "{{VIRABLE}}.qss"
+            }
+        }
+    }
+}
